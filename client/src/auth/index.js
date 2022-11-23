@@ -11,6 +11,7 @@ export const AuthActionType = {
     LOGOUT: "LOGOUT",
     REGISTER_RETRY: "REGISTER_RETRY",
     LOGIN_RETRY: "LOGIN_RETRY",
+    RESET_ERROR: "RESET_ERROR",
 }
 
 function AuthContextProvider(props) {
@@ -19,7 +20,7 @@ function AuthContextProvider(props) {
         user: null,
         loggedIn: false,
         successfulRegister: true,
-        error: null,
+        error: "",
         loading: true
     });
 
@@ -40,7 +41,6 @@ function AuthContextProvider(props) {
                     successfulRegister: payload.successfulRegister,
                     successfulLogin: false,
                     error: payload.error,
-                    guest: auth.guest
                 })
             }
 
@@ -50,8 +50,7 @@ function AuthContextProvider(props) {
                     loggedIn: payload.loggedIn,
                     successfulRegister: true,
                     successfulLogin: true,
-                    error: null,
-                    guest: auth.guest
+                    error: "",
                 });
             }
             case AuthActionType.SET_LOGGED_IN: {
@@ -61,7 +60,6 @@ function AuthContextProvider(props) {
                     successfulRegister: false,
                     successfulLogin: payload.successfulLogin,
                     error: payload.error,
-                    guest: false
                 });
             }
             case AuthActionType.LOGOUT: {
@@ -70,8 +68,17 @@ function AuthContextProvider(props) {
                     loggedIn: false,
                     successfulRegister: true,
                     successfulLogin: true,
-                    error: null,
-                    guest: auth.guest
+                    error: "",
+                });
+            }
+
+            case AuthActionType.RESET_ERROR: {
+                return setAuth({
+                    user: null,
+                    loggedIn: false,
+                    successfulRegister: true,
+                    successfulLogin: true,
+                    error: "",
                 });
             }
         }
@@ -159,6 +166,15 @@ function AuthContextProvider(props) {
                 }
             });
         }
+    }
+
+    auth.resetError = function () {
+        authReducer({
+            type: AuthActionType.RESET_ERROR,
+            payload:{
+                error:""
+            }
+        })
     }
 
     return (

@@ -15,6 +15,7 @@ function SignUp() {
     const [email, setEmail] = useState("")
 
     const {auth} = useContext(AuthContext)
+    const navigate = useNavigate();
 
     console.log(auth.user)
 

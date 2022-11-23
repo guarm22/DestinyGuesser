@@ -6,6 +6,8 @@ import SignIn from "./routes/SignIn";
 import './App.css';
 import { GlobalStoreContextProvider } from './store'
 import { AuthContextProvider } from "./auth";
+import Trivia from "./routes/Trivia";
+import LocationGuesser from "./routes/LocationGuesser";
 
 const App = () => {
   return (
@@ -17,7 +19,8 @@ const App = () => {
               <Route path="/" element={<Home/>}/>
               <Route path="/signUp" element={<SignUp/>}/>
               <Route path="/login" element={<SignIn/>}/>
-
+              <Route path="/trivia" element={<Trivia/>}/>
+              <Route path="/locationGuesser" element={<LocationGuesser/>}/>
             </Routes>
         </GlobalStoreContextProvider>
       </AuthContextProvider>

@@ -12,6 +12,7 @@ function SignIn() {
     const [password, setPassword] = useState("")        //controlled fields
     const [username, setUsername] = useState("")
     const {auth} = useContext(AuthContext)
+    const navigate = useNavigate();
 
     const handleSignIn = () => {
         auth.setLoggedIn({username:username, password:password})
@@ -32,11 +33,11 @@ function SignIn() {
         }
     }
 
-    let modal = modalShown ? <DGModal message={"test"} onClose={() => setModalShown(false)}></DGModal> : null
+    let modal = auth.error != "" ? <DGModal message={auth.error} onClose={() => auth.resetError()}></DGModal> : null
 
     return (
         <Box sx={{display:"flex", alignItems:"center", flexDirection:"column", width:"100%"}}>
-            <Typography sx={{color:"white", marginTop:5, fontSize:30}}>Sign up for DestinyGuesser</Typography>
+            <Typography sx={{color:"white", marginTop:5, fontSize:30}}>Sign in to DestinyGuesser</Typography>
             <Box className="sign-up" sx={{display:"flex", flexDirection:"column",width:"50%", alignItems:"center"}}>
                 {modal}
                 <TextField className="text-field" sx={{marginBottom:2}} onChange={(event) => handleFieldChange(event, "username") }

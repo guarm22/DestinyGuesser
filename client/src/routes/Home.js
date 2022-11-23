@@ -8,13 +8,14 @@ import { useEffect, useState } from 'react'
 import AuthContext from '../auth';
 
 function Home() {
-
+    const navigate = useNavigate();
     const { store } = useContext(GlobalStoreContext)
     const {auth} = useContext(AuthContext)
 
     return (
       <Box className="Home">
-
+        <Button variant="contained" onClick={() => navigate("/locationGuesser", {})}>Location Guesser</Button>
+        <Button variant="contained" sx={{marginTop:5}} onClick={() => navigate("/trivia", {})}>Trivia</Button>
       </Box>
     );
   }
