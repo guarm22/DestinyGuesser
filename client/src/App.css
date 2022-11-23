@@ -1,24 +1,30 @@
-.App {
-  text-align: center;
-  
-}
-
 .Banner {
   background-color: #0c1118;
 }
 
 .Home{
-  padding-top: 1%;
+  padding-top: 0.8%;
   align-items: center;
   display: flex;
   flex-direction: column;
+  color:white;
+  height:100%;
 }
 
 html {
   background: rgb(42,52,105);
 background: radial-gradient(circle, rgba(42,52,105,1) 0%, rgba(56,41,44,1) 100%) fixed;
-
 } 
+
+.home-banner {
+  background-color: gray;
+  width:50%;
+  border-radius: 10px;
+  height:30%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  margin-bottom: 2%;
+}
 
 .banner {
   display:flex;
