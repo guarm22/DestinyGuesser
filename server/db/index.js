@@ -4,7 +4,7 @@ dotenv.config();
 
 const { MongoClient, ServerApiVersion } = require('mongodb');
 
-const uri = "mongodb+srv://silonyx:tornado123@cluster0.qhqnp4y.mongodb.net/test?retryWrites=true&w=majority";
+const uri = "mongodb+srv://destinyguesser:destinyguesseradmin123@destinyguesser0.o3tnqa7.mongodb.net/test?retryWrites=true&w=majority";
 const db = mongoose.connect(uri)  
 
 

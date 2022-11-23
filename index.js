@@ -16,7 +16,7 @@ app.use(express.json())
 app.use(cookieParser())
 
 // SETUP OUR OWN ROUTERS AS MIDDLEWARE
-const top5listsRouter = require(__dirname +'/server/routes/gameshow-router.js')
+const top5listsRouter = require(__dirname +'/server/routes/router.js')
 app.use('/api', top5listsRouter)
 
 // INITIALIZE OUR DATABASE OBJECT

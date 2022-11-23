@@ -11,8 +11,7 @@ import GlobalStoreContext from '../store';
 function Banner() {
     const {auth} = useContext(AuthContext)
     const navigate = useNavigate();
-    const {store} = useContext(GlobalStoreContext)
-
+    
     function handleLogout() {
         auth.logoutUser();
     } 
@@ -26,7 +25,7 @@ function Banner() {
     let accBox = <Box marginRight="10px">{loginButton} {signUpButton}</Box>
 
     if(auth.loggedIn) {
-        accBox = <Box className="horizontal-list">
+        accBox = <Box className="user-banner">
                     <Box paddingRight="15px" paddingTop="7px">{auth.user.username}</Box>
                     <Button variant="contained"  onClick={handleLogout}>Log out</Button>
                 </Box>

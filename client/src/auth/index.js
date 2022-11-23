@@ -120,7 +120,7 @@ function AuthContextProvider(props) {
     }
 
 
-    auth.registerUser = async function(userData, store) {
+    auth.registerUser = async function(userData) {
         let response;
         try {
             response = await api.registerUser(userData);   
@@ -136,6 +136,7 @@ function AuthContextProvider(props) {
             }
         }
         catch(error) {
+            console.log(error)
             authReducer({
                 type: AuthActionType.REGISTER_USER,
                 payload: {

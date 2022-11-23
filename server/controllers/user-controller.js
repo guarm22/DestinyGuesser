@@ -61,7 +61,7 @@ registerUser = async (req, res) => {
             sameSite: "none"
         }).status(200).json({
             success: true,
-            user: loggedInUser
+            user: savedUser
         }).send();
     } catch (err) {
         console.error(err);
