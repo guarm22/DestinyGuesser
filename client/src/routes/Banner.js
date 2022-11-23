@@ -36,8 +36,8 @@ function Banner() {
     return (
         <Box sx={{ flexGrow: 1 }} >
             <Box className="banner">
-            <Button color="inherit" variant="outlined" onClick={() => handleButton("/")}>Website</Button>    
-            {accBox}        
+                <Button color="inherit" variant="outlined" onClick={() => handleButton("/")}>DestinyGuesser</Button>    
+                {accBox}        
             </Box>
         </Box>
     );
