@@ -18,14 +18,13 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "dev": "react-scripts start",
+    "dev": "cd client && npm start",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "heroku-prebuild": "npm install -f",
-    "heroku-postbuild": "npm run build",
-	"dev": "cd client && npm start"
+    "heroku-postbuild": "npm run build"
   },
   "eslintConfig": {
     "extends": [
