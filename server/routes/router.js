@@ -11,6 +11,7 @@ router.post('/login', UserController.login)
 router.get('/logout', UserController.logout)
 
 router.post('/createTriviaQuestion', TriviaQuestionController.createTriviaQuestion)
+router.get('/getTriviaQuestion', TriviaQuestionController.getTriviaQuestion)
 
 router.post('/createLocation', LocationController.createLocation)
 

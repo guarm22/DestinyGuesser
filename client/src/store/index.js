@@ -9,6 +9,7 @@ export const GlobalStoreContext = createContext({});
 export const GlobalStoreActionType = {
     CREATE_LOCATION: "CREATE_LOCATION",
     CREATE_TRIVIA_QUESTION: "CREATE_TRIVIA_QUESTION",
+    GET_TRIVIA_QUESTION: "GET_TRIVIA_QUESTION"
 }
 
 
@@ -20,15 +21,18 @@ function GlobalStoreContextProvider(props) {
     const [store, setStore] = useState({
         locations: [],
         triviaQuestions: [],
+        currentTriviaQuestion: []
     });
 
     const storeReducer = (action) => {
         const {type, payload} = action
+
         switch(type) {
             case GlobalStoreActionType.CREATE_LOCATION:
                 setStore({
                     locations: payload.locations,
                     triviaQuestions: store.triviaQuestions,
+                    currentTriviaQuestion: store.currentTriviaQuestion
                 })
                 break;
 
@@ -36,8 +40,15 @@ function GlobalStoreContextProvider(props) {
                 setStore({
                     locations: store.locations,
                     triviaQuestions: payload.triviaQuestions,
+                    currentTriviaQuestion: store.currentTriviaQuestion
                 })
             
+            case GlobalStoreActionType.GET_TRIVIA_QUESTION:
+                setStore({
+                    locations: store.locations,
+                    triviaQuestions: store.triviaQuestions,
+                    currentTriviaQuestion: payload.currentTriviaQuestion
+                })
 
             default:
                 return store;
@@ -51,7 +62,10 @@ function GlobalStoreContextProvider(props) {
                 store.locations.push(response.data.location)
 
                 storeReducer({
-                    locations: store.locations
+                    type: GlobalStoreActionType.CREATE_TRIVIA_QUESTION,
+                    payload: {
+                        locations: store.locations
+                    }
                 })
             }
         }
@@ -68,7 +82,29 @@ function GlobalStoreContextProvider(props) {
             if(response.status == 200) {
                 store.triviaQuestions.push(response.data.triviaQuestion)
                 storeReducer({
-                    triviaQuestions: store.triviaQuestions
+                    type: GlobalStoreActionType.GET_LOGGED_IN,
+                    payload: {
+                        triviaQuestions: store.triviaQuestions
+                    }
+                })
+            }
+        }
+        catch(err) {
+            console.log(err)
+        }
+    }
+
+    store.getTriviaQuestion = async function () {
+        try {
+            let response = await api.getTriviaQuestion() 
+
+            if(response.status == 200) {
+                console.log(response.data.triviaQuestion);
+                storeReducer({
+                    type: GlobalStoreActionType.GET_TRIVIA_QUESTION,
+                    payload: {
+                        currentTriviaQuestion: response.data.triviaQuestion
+                    }
                 })
             }
         }

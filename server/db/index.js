@@ -8,7 +8,7 @@ const uri = "mongodb+srv://destinyguesser:destinyguesseradmin123@destinyguesser0
 const db = mongoose.connect(uri)  
 
 
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion });
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: "1" });
 
 
 module.exports = client

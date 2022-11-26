@@ -13,6 +13,7 @@ export const updateUser = (payload) => api.put(`/user/`, payload)
 export const createLocation = (payload) => api.post(`/createLocation/`, payload)
 
 export const createTriviaQuestion = (payload) => api.post(`/createTriviaQuestion`, payload)
+export const getTriviaQuestion = () => api.get('/getTriviaQuestion/');
 
 const apis= {
     registerUser,
@@ -24,6 +25,7 @@ const apis= {
     createLocation,
 
     createTriviaQuestion,
+    getTriviaQuestion
 }
 
 export default apis;
